@@ -72,8 +72,11 @@ class Loggify:
         exc_value: Optional[BaseException],
         exc_traceback: Optional[TracebackType],
     ) -> bool:
-        exc = "".join(traceback.format_exception(exc_type, exc_value, exc_traceback))
-        self.stderr_logger.write(exc, to_stream=False)
+        if exc_type or exc_value or exc_traceback:
+            exc = "".join(
+                traceback.format_exception(exc_type, exc_value, exc_traceback)
+            )
+            self.stderr_logger.write(exc, to_stream=False)
         sys.stdout = sys.__stdout__
         sys.stderr = sys.__stderr__
         return False
