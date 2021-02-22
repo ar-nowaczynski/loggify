@@ -23,14 +23,24 @@ class Loggify:
         if replace and os.path.isfile(filename):
             os.remove(filename)
         self.stdout_logger = self._get_stdout_logger(
-            filename=filename, filemode=filemode, linefmt=linefmt, datefmt=datefmt
+            filename=filename,
+            filemode=filemode,
+            linefmt=linefmt,
+            datefmt=datefmt,
         )
         self.stderr_logger = self._get_stderr_logger(
-            filename=filename, filemode=filemode, linefmt=linefmt, datefmt=datefmt
+            filename=filename,
+            filemode=filemode,
+            linefmt=linefmt,
+            datefmt=datefmt,
         )
 
     def _get_stdout_logger(
-        self, filename: str, filemode: str, linefmt: str, datefmt: str,
+        self,
+        filename: str,
+        filemode: str,
+        linefmt: str,
+        datefmt: str,
     ) -> "StreamToLogger":
         level = logging.INFO
         logger = logging.getLogger(name=_STDOUT_LOGGER_NAME)
@@ -41,12 +51,19 @@ class Loggify:
         file_handler.setFormatter(fmt=formatter)
         logger.addHandler(hdlr=file_handler)
         stdout_logger = StreamToLogger(
-            stream=sys.__stdout__, logger=logger, level=level,
+            stream=sys.__stdout__,
+            logger=logger,
+            level=level,
+            encoding="utf-8",
         )
         return stdout_logger
 
     def _get_stderr_logger(
-        self, filename: str, filemode: str, linefmt: str, datefmt: str,
+        self,
+        filename: str,
+        filemode: str,
+        linefmt: str,
+        datefmt: str,
     ) -> "StreamToLogger":
         level = logging.ERROR
         logger = logging.getLogger(name=_STDERR_LOGGER_NAME)
@@ -57,7 +74,10 @@ class Loggify:
         file_handler.setFormatter(fmt=formatter)
         logger.addHandler(hdlr=file_handler)
         stderr_logger = StreamToLogger(
-            stream=sys.__stderr__, logger=logger, level=level
+            stream=sys.__stderr__,
+            logger=logger,
+            level=level,
+            encoding="utf-8",
         )
         return stderr_logger
 
@@ -85,13 +105,23 @@ class Loggify:
 class StreamToLogger:
     """Stream object that redirects writes to a logger instance."""
 
-    def __init__(self, stream: TextIO, logger: logging.Logger, level: int) -> None:
+    def __init__(
+        self,
+        stream: TextIO,
+        logger: logging.Logger,
+        level: int,
+        encoding: str,
+    ) -> None:
         self.stream = stream
         self.logger = logger
         self.level = level
+        self.encoding = encoding
         self._linebuf = ""
 
     def write(self, data: str, to_stream: bool = True) -> None:
+        if isinstance(data, bytes):
+            self.stream.write(data.decode("utf-8"))
+            return
         if to_stream:
             self.stream.write(data)
         linebuf = self._linebuf + data
