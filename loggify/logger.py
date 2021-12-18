@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 import os
 import sys
@@ -41,7 +43,7 @@ class Loggify:
         filemode: str,
         linefmt: str,
         datefmt: str,
-    ) -> "StreamToLogger":
+    ) -> StreamToLogger:
         level = logging.INFO
         logger = logging.getLogger(name=_STDOUT_LOGGER_NAME)
         logger.setLevel(level=level)
@@ -64,7 +66,7 @@ class Loggify:
         filemode: str,
         linefmt: str,
         datefmt: str,
-    ) -> "StreamToLogger":
+    ) -> StreamToLogger:
         level = logging.ERROR
         logger = logging.getLogger(name=_STDERR_LOGGER_NAME)
         logger.setLevel(level=level)

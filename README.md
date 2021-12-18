@@ -1,6 +1,6 @@
 # Loggify: capture prints and tracebacks to log file with 2&nbsp;lines of code
 
-[![Python](https://img.shields.io/badge/Python-3.6%20%7C%203.7%20%7C%203.8-blue)](https://www.python.org/downloads/)
+[![Python](https://img.shields.io/badge/Python-3.7%20%7C%203.8%20%7C%203.9-blue)](https://www.python.org/downloads/)
 [![PyPI version](https://img.shields.io/pypi/v/loggify?color=1)](https://pypi.org/project/loggify/)
 [![license](https://img.shields.io/pypi/l/loggify)](https://github.com/ar-nowaczynski/loggify)
 
