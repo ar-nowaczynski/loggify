@@ -15,13 +15,13 @@ setup(
     author_email="ar.nowaczynski@gmail.com",
     url="https://github.com/ar-nowaczynski/loggify",
     packages=["loggify"],
-    python_requires=">=3.6",
+    python_requires=">=3.7",
     install_requires=[],
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
     ],
 )
