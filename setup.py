@@ -6,7 +6,7 @@ README_TEXT = README_PATH.read_text()
 
 setup(
     name="loggify",
-    version="0.1.2",
+    version="0.2.0",
     license="MIT",
     description="Capture prints and tracebacks to the timestamped log file with 2 lines of code",
     long_description=README_TEXT,
