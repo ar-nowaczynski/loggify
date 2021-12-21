@@ -1,10 +1,10 @@
-# Loggify: capture prints and tracebacks to log file with 2&nbsp;lines of code
+# Loggify: capture prints and tracebacks to a log file with 2&nbsp;lines of code
 
 [![Python](https://img.shields.io/badge/Python-3.7%20%7C%203.8%20%7C%203.9-blue)](https://www.python.org/downloads/)
 [![PyPI version](https://img.shields.io/pypi/v/loggify?color=1)](https://pypi.org/project/loggify/)
 [![license](https://img.shields.io/pypi/l/loggify)](https://github.com/ar-nowaczynski/loggify)
 
-Loggify is a convenient way to redirect stdout and stderr to the timestamped log file. It works by temporarily overriding the default behaviour of `sys.stdout` and `sys.stderr` in the context manager. You still see the output in the console - it is just additionally streamed to the log file (see example below).
+Loggify is a convenient way to redirect stdout and stderr to the timestamped log file. It works by temporarily overriding the default behaviour of `sys.stdout` and `sys.stderr` in the context manager. You still see the output in the console - it is just additionally streamed to the log file (see the example below).
 
 ## Installation
 
@@ -26,11 +26,11 @@ def main():
     print("END")
     5 / 0   # traceback will be captured
 
-with Loggify("output.log"):  # specify output filename
+with Loggify("main.log"):  # specify output filename
     main()
 ```
 
-output.log:
+main.log:
 ```
 2020-04-07 20:45:18.391:STDOUT:START
 2020-04-07 20:45:18.391:STDOUT:x
