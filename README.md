@@ -26,11 +26,11 @@ def main():
     print("END")
     5 / 0   # traceback will be captured
 
-with Loggify("output.log"):  # specify output filename
+with Loggify("main.log"):  # specify output filename
     main()
 ```
 
-output.log:
+main.log:
 ```
 2020-04-07 20:45:18.391:STDOUT:START
 2020-04-07 20:45:18.391:STDOUT:x
