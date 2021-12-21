@@ -8,7 +8,7 @@ setup(
     name="loggify",
     version="0.2.0",
     license="MIT",
-    description="Capture prints and tracebacks to the timestamped log file with 2 lines of code",
+    description="Capture prints and tracebacks to a log file with 2 lines of code",
     long_description=README_TEXT,
     long_description_content_type="text/markdown",
     author="Arkadiusz Nowaczyński",
